@@ -1,0 +1,20 @@
+version: "3.7"
+services:
+  app:
+    build: .
+    container_name: php-apache-app
+    ports:
+      - 80:80
+    volumes:
+      - ./apache-laravel-app:/var/www/html
+
+  db:
+    image: mysql:5.7
+    container_name: php-apache-database
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_DATABASE=apache_laravel_db
+      - MYSQL_ROOT_PASSWORD=root
+
+
